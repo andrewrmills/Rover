@@ -38,30 +38,47 @@ export default class Floor
 
     setGeometry()
     {
-        this.geometry = new THREE.CircleGeometry(500, 64)
+        this.geometry = new THREE.CircleGeometry(250, 64)
     }
 
     setTextures()
     {
+        this.repeatX = 1
+        this.repeatY = 1
+
         this.textures = {}
 
         this.textures.color = this.resources.items.grassColorTexture
         this.textures.color.encoding = THREE.sRGBEncoding
-        this.textures.color.repeat.set(15, 15)
+        this.textures.color.repeat.set(this.repeatX, this.repeatY)
         this.textures.color.wrapS = THREE.RepeatWrapping
         this.textures.color.wrapT = THREE.RepeatWrapping
 
         this.textures.normal = this.resources.items.grassNormalTexture
-        this.textures.normal.repeat.set(15, 15)
+        this.textures.normal.repeat.set(this.repeatX, this.repeatY)
         this.textures.normal.wrapS = THREE.RepeatWrapping
         this.textures.normal.wrapT = THREE.RepeatWrapping
+
+        // this.textures.ambientOcclusion = this.resources.items.moonOccTexture
+        // this.textures.ambientOcclusion.repeat.set(this.repeatX, this.repeatY)
+        // this.textures.ambientOcclusion.wrapS = THREE.RepeatWrapping
+        // this.textures.ambientOcclusion.wrapT = THREE.RepeatWrapping
+
+        // this.textures.disp = this.resources.items.moonDispTexture
+        // this.textures.disp.repeat.set(this.repeatX, this.repeatY)
+        // this.textures.disp.wrapS = THREE.RepeatWrapping
+        // this.textures.disp.wrapT = THREE.RepeatWrapping
+
     }
 
     setMaterial()
     {
         this.material = new THREE.MeshStandardMaterial({
             map: this.textures.color,
-            normalMap: this.textures.normal
+            normalMap: this.textures.normal,
+            // aoMap: this.textures.ambientOcclusion,
+            // displacementMap: this.textures.disp,
+            // displacementScale : 1
         })
     }
 
@@ -69,7 +86,7 @@ export default class Floor
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
         this.mesh.rotation.x = - Math.PI * 0.5
-        this.mesh.receiveShadow = true
+        // this.mesh.receiveShadow = true
         this.scene.add(this.mesh)
     }
 }

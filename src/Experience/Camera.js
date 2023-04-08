@@ -34,7 +34,6 @@ export default class Camera
             // Far
             500
             )
-            // this.instance.position.set(16, 8, 18)
             this.instance.position.set(50, 25, -40)
             this.scene.add(this.instance)
 

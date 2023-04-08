@@ -24,11 +24,16 @@ export default class Environment
     {
         this.sunLight = new THREE.DirectionalLight('#ffffff', 4)
         this.sunLight.castShadow = true
+        this.sunLight.shadow.camera.near = -5
         this.sunLight.shadow.camera.far = 15
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0.05
         this.sunLight.position.set(3.5, 2, - 1.25)
         this.scene.add(this.sunLight)
+
+        // Shadow Helper
+        // this.sunLightCameraHelper = new THREE.CameraHelper(this.sunLight.shadow.camera)
+        // this.scene.add(this.sunLightCameraHelper)
 
                 // Debug
                 if(this.debug.active)
@@ -66,7 +71,7 @@ export default class Environment
     setEnvironmentMap()
     {
         this.environmentMap = {}
-        this.environmentMap.intensity = 0.4
+        this.environmentMap.intensity = 1
         this.environmentMap.texture = this.resources.items.environmentMapTexture
         this.environmentMap.texture.encoding = THREE.sRGBEncoding
 
@@ -103,6 +108,8 @@ export default class Environment
         this.roverX = this.experience.world.scene.children[2].position.x
         this.roverY = this.experience.world.scene.children[2].position.y
         this.roverZ = this.experience.world.scene.children[2].position.z
+
+        this.sunLight.lookAt(this.experience.world.scene.children[2].position)
 
         this.sunLight.position.set(
             this.roverX + 3.5,

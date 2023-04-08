@@ -134,19 +134,18 @@ export default class Rover
         this.model.scale.set(1, 1, 1)
         this.scene.add(this.model)
 
-        this.model.traverse((child) => 
-        {
-            if(child instanceof THREE.Mesh)
-            {
-                child.castShadow = true
-                child.receiveShadow = true
-            }
-        })
+        // this.model.traverse((child) => 
+        // {
+        //     if(child instanceof THREE.Mesh)
+        //     {
+        //         child.castShadow = true
+        //         child.receiveShadow = true
+        //     }
+        // })
     }
     resetModel()
     {
       this.body.position.set(0, 0, 0)
-      this.body.quarternation.set(0, 0, 0, 1)
     }
 
     moveModel()
