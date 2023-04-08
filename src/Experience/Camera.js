@@ -10,6 +10,12 @@ export default class Camera
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
+        this.debug = this.experience.debug
+
+        if(this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('Camera')
+        }
 
         this.setInstance()
         this.setOrbitControls()
@@ -29,8 +35,32 @@ export default class Camera
             500
             )
             // this.instance.position.set(16, 8, 18)
-            this.instance.position.set(-0.2, 27, -35)
+            this.instance.position.set(50, 25, -40)
             this.scene.add(this.instance)
+
+            if(this.debug.active)
+            {
+                this.debugFolder
+                .add(this.instance.position, 'x')
+                .name('cameraX')
+                .min(-50)
+                .max(50)
+                .step(1)
+
+                this.debugFolder
+                .add(this.instance.position, 'y')
+                .name('cameraY')
+                .min(-50)
+                .max(50)
+                .step(1)
+
+                this.debugFolder
+                .add(this.instance.position, 'z')
+                .name('cameraZ')
+                .min(-50)
+                .max(50)
+                .step(1)
+            }
    
     }
 
@@ -53,9 +83,9 @@ export default class Camera
         this.roverZ = this.experience.world.scene.children[2].position.z
 
         this.instance.position.set(
-            this.roverX - 0.2,
-            this.roverY + 27,
-            this.roverZ - 35
+            this.roverX + 50,
+            this.roverY + 25,
+            this.roverZ - 40
         )
 
         this.instance.lookAt(this.experience.world.scene.children[2].position)  

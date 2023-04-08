@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import CANNON from 'cannon'
+import * as CANNON from 'cannon-es'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Camera from './Camera.js'
@@ -41,7 +41,7 @@ export default class Experience
         this.physics = new CANNON.World()
         // this.physics.broadphase = new CANNON.SAPBroadphase(this.physics)
         // this.physics.allowSleep = true
-        this.physics.gravity.set(0, -5, 0)
+        this.physics.gravity.set(0, -9.82, 0)
         
         this.defaultMaterial = new CANNON.Material('default')
         
@@ -50,7 +50,7 @@ export default class Experience
            this.defaultMaterial,
            this.defaultMaterial,
           {
-               friction: 10,
+               friction: 0.3,
                restitution: 0.7
           }
         )
@@ -75,8 +75,9 @@ export default class Experience
     }
 
     update() 
-    {
+    {   
         this.physics.step(1/60, this.time.delta, 3)
+        // this.physics.fixedStep()
 
         if(this.world.rover)
         {
@@ -84,6 +85,7 @@ export default class Experience
         }
         this.world.update()
         this.renderer.update()
+
     }
 
     destroy()
