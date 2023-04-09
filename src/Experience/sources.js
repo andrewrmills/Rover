@@ -2,17 +2,9 @@
 
 export default [
     {
-        name: 'environmentMapTexture',
-        type: 'cubeTexture',
-        path:
-        [
-            'textures/environmentMap/px.jpg',
-            'textures/environmentMap/nx.jpg',
-            'textures/environmentMap/py.jpg',
-            'textures/environmentMap/ny.jpg',
-            'textures/environmentMap/pz.jpg',
-            'textures/environmentMap/nz.jpg',
-        ]
+        name: 'environmentHdrTexture',
+        type: 'RGBEtexture',
+        path: 'textures/environmentMap/hdr.hdr'
     },
     {
         name: 'grassColorTexture',
@@ -50,13 +42,13 @@ export default [
         path: 'textures/moon/moon_spec.jpg'
     },
     {
-        name: 'landerModel',
+        name: 'roverModel',
         type: 'gltfModel',
         path: 'models/Sev/sev.glb'
     },
     {
-        name: 'moonModel',
+        name: 'landerModel',
         type: 'gltfModel',
-        path: 'models/Moon/moon.glb'
-    }
+        path: 'models/Lander/lander.glb'
+    },
 ]

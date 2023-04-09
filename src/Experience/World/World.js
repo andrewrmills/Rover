@@ -2,6 +2,7 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Floor from './floor.js'
 import Rover from './Rover.js'
+import Lander from './Lander.js'
 
 export default class World
 {
@@ -14,9 +15,12 @@ export default class World
         // Wait for resources
         this.resources.on('ready', () =>
         {
+            console.log("here")
+
             // Setup
             this.floor = new Floor()
             this.rover = new Rover()
+            this.lander = new Lander()
             this.environment = new Environment()
         })
     }
@@ -27,6 +31,10 @@ export default class World
         {
             this.rover.update()
             // this.environment.update()
+        }
+        if(this.lander)
+        {
+            this.lander.update()
         }
     }
 }

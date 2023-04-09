@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import {RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 import EventEmitter from './EventEmitter.js'
 
 export default class Resources extends EventEmitter 
@@ -23,9 +25,13 @@ export default class Resources extends EventEmitter
     setLoaders()
     {
         this.loaders = {}
+        this.loaders.dracoLoader = new DRACOLoader()
+        this.loaders.dracoLoader.setDecoderPath('/draco/')
         this.loaders.gltfLoader = new GLTFLoader()
+        this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
         this.loaders.textureLoader = new THREE.TextureLoader()
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+        this.loaders.rgbeLoader = new RGBELoader()
     }
 
     startLoading()
@@ -36,6 +42,16 @@ export default class Resources extends EventEmitter
             if(source.type === 'gltfModel')
             {
                 this.loaders.gltfLoader.load(
+                    source.path,
+                    (file) =>
+                    {
+                        this.sourceLoaded(source, file)
+                    }
+                )
+            }
+            else if(source.type === 'dracoModel')
+            {
+                this.loaders.dracoLoader.load(
                     source.path,
                     (file) =>
                     {
@@ -56,6 +72,16 @@ export default class Resources extends EventEmitter
             else if(source.type === 'cubeTexture')
             {
                 this.loaders.cubeTextureLoader.load(
+                    source.path,
+                    (file) =>
+                    {
+                        this.sourceLoaded(source, file)
+                    }
+                )
+            }
+            else if(source.type === 'RGBEtexture')
+            {
+                this.loaders.rgbeLoader.load(
                     source.path,
                     (file) =>
                     {

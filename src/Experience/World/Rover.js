@@ -20,7 +20,7 @@ export default class Rover
         }
 
         // Setup
-        this.resource = this.resources.items.landerModel
+        this.resource = this.resources.items.roverModel
 
         this.setModel()
     }
@@ -179,6 +179,11 @@ export default class Rover
             this.vehicle.setSteeringValue(-this.maxSteerVal, 0);
             this.vehicle.setSteeringValue(-this.maxSteerVal, 2);
             break;
+            
+            case 'Shift':
+            this.vehicle.setWheelForce((this.maxForce) * 2, 0);
+            this.vehicle.setWheelForce((this.maxForce) * 2, 2);
+            break
          }
         });
 
@@ -208,6 +213,11 @@ export default class Rover
                 this.vehicle.setSteeringValue(0, 2);
                 break;
 
+              case 'Shift':
+                this.vehicle.setWheelForce(this.maxForce, 0);
+                this.vehicle.setWheelForce(this.maxForce, 2);
+                break
+
               case 'r':
                 this.resetModel()
                 break
@@ -235,11 +245,5 @@ export default class Rover
 
         this.model.position.copy(this.body.position)
         this.model.quaternion.copy(this.body.quaternion)
-
-        // this.model.position.set(
-        //     this.body.position.x, 
-        //     this.body.position.y - 1, 
-        //     this.body.position.z
-        //     )
     }
 }
