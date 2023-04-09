@@ -29,8 +29,8 @@ export default class Rover
     {
 
       this.x = 2
-      this.y = 2
-      this.z = 4
+      this.y = 1
+      this.z = 3
 
 
         // Physics
@@ -63,7 +63,7 @@ export default class Rover
         this.vehicle.addWheel({
           body: this.wheelBody1,
           isFrontWheel: true,
-          position: new CANNON.Vec3(this.axisWidth / 2, -1.1, 3),
+          position: new CANNON.Vec3(this.axisWidth / 2, -1.1, 2),
           axis: new CANNON.Vec3(1, 0, 0),
           direction: this.down
         });
@@ -84,7 +84,7 @@ export default class Rover
         this.vehicle.addWheel({
           body: this.wheelBody3,
           isFrontWheel: true,
-          position: new CANNON.Vec3(-this.axisWidth / 2, -1.1, 3),
+          position: new CANNON.Vec3(-this.axisWidth / 2, -1.1, 2),
           axis: new CANNON.Vec3(1, 0, 0),
           direction: this.down
         });

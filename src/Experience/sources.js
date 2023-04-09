@@ -51,4 +51,14 @@ export default [
         type: 'gltfModel',
         path: 'models/Lander/lander.glb'
     },
+    {
+        name: 'gantryModel',
+        type: 'gltfModel',
+        path: 'models/Gantry/gantry.glb'
+    },
+    {
+        name: 'hsuModel',
+        type: 'gltfModel',
+        path: 'models/HSU/hsu.glb'
+    }
 ]

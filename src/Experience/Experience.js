@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import * as CANNON from 'cannon-es'
+import CannonDebugger from 'cannon-es-debugger'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Camera from './Camera.js'
@@ -56,6 +57,8 @@ export default class Experience
         )
         this.physics.addContactMaterial(this.defaultContactMaterial)
 
+        // this.cannonDebugger = new CannonDebugger(this.scene, this.physics)
+
         // Sizes resize event
         this.sizes.on('resize', () => 
         {
@@ -85,6 +88,7 @@ export default class Experience
         }
         this.world.update()
         this.renderer.update()
+        // this.cannonDebugger.update()
 
     }
 

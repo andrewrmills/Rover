@@ -93,6 +93,6 @@ export default class Camera
     update() 
     {
         this.controls.update()
-        this.followRover()
+        // this.followRover()
     }
 }

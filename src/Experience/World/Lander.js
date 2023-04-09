@@ -37,8 +37,8 @@ export default class Lander
         this.shape = new CANNON.Box(new CANNON.Vec3(this.x, this.y, this.z))
         this.body = new CANNON.Body({
             mass: 10,
-            position: new CANNON.Vec3(20, 2, 0),
-            quaternion: new CANNON.Quaternion(), 
+            position: new CANNON.Vec3(-43, 12, 3),
+            quaternion: new CANNON.Quaternion(0, Math.PI/2, 0, 0), 
             shape: this.shape,
             material: this.experience.physics.defaultMaterial
         })
@@ -71,7 +71,6 @@ export default class Lander
 
         // Model
         this.model = this.resource.scene
-        this.model.rotation.set(0, Math.PI/2, 0)
         this.model.position.copy(this.body.position)
         this.model.scale.set(1, 1, 1)
         this.scene.add(this.model)
@@ -83,6 +82,5 @@ export default class Lander
     {      
         this.model.position.copy(this.body.position)
         this.model.quaternion.copy(this.body.quaternion)
-        this.model.position.y -= 2.1
     }
 }
