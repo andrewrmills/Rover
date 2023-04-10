@@ -40,7 +40,7 @@ export default class Experience
 
         // Physics
         this.physics = new CANNON.World()
-        // this.physics.broadphase = new CANNON.SAPBroadphase(this.physics)
+        this.physics.broadphase = new CANNON.SAPBroadphase(this.physics)
         // this.physics.allowSleep = true
         this.physics.gravity.set(0, -9.82, 0)
         

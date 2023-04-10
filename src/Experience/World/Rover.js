@@ -100,32 +100,6 @@ export default class Rover
         });
 
         this.vehicle.addToWorld(this.world)
-        // this.world.addBody(this.body)
-
-        // this.boxGeometry = new THREE.BoxGeometry(this.x, this.y, this.z)
-        // this.boxMaterial = new THREE.MeshStandardMaterial()
-        // this.boxMesh = new THREE.Mesh(this.boxGeometry, this.boxMaterial)
-        // this.scene.add(this.boxMesh)
-
-        // this.sphereGeometry1 = new THREE.SphereGeometry(1)
-        // this.sphereMaterial1 = new THREE.MeshNormalMaterial({wireframe: true})
-        // this.sphereMesh1 = new THREE.Mesh(this.sphereGeometry1, this.sphereMaterial1)
-        // this.scene.add(this.sphereMesh1)
-
-        // this.sphereGeometry2 = new THREE.SphereGeometry(1)
-        // this.sphereMaterial2 = new THREE.MeshNormalMaterial({wireframe: true})
-        // this.sphereMesh2 = new THREE.Mesh(this.sphereGeometry2, this.sphereMaterial2)
-        // this.scene.add(this.sphereMesh2)
-
-        // this.sphereGeometry3 = new THREE.SphereGeometry(1)
-        // this.sphereMaterial3 = new THREE.MeshNormalMaterial({wireframe: true})
-        // this.sphereMesh3 = new THREE.Mesh(this.sphereGeometry3, this.sphereMaterial3)
-        // this.scene.add(this.sphereMesh3)
-
-        // this.sphereGeometry4 = new THREE.SphereGeometry(1)
-        // this.sphereMaterial4 = new THREE.MeshNormalMaterial({wireframe: true})
-        // this.sphereMesh4 = new THREE.Mesh(this.sphereGeometry4, this.sphereMaterial4)
-        // this.scene.add(this.sphereMesh4)
 
         // Model
         this.model = this.resource.scene
@@ -145,7 +119,12 @@ export default class Rover
     }
     resetModel()
     {
-      this.body.position.set(0, 0, 0)
+
+      this.vehicle.removeFromWorld(this.world)
+      this.scene.remove(this.model)
+
+      this.setModel()
+
     }
 
     moveModel()
@@ -231,17 +210,6 @@ export default class Rover
     update() 
     {      
         this.moveModel()
-
-        // this.sphereMesh1.position.copy(this.wheelBody1.position)
-        // this.sphereMesh1.quaternion.copy(this.wheelBody1.quaternion)
-        // this.sphereMesh2.position.copy(this.wheelBody2.position)
-        // this.sphereMesh2.quaternion.copy(this.wheelBody2.quaternion)
-        // this.sphereMesh3.position.copy(this.wheelBody3.position)
-        // this.sphereMesh3.quaternion.copy(this.wheelBody3.quaternion)
-        // this.sphereMesh4.position.copy(this.wheelBody4.position)
-        // this.sphereMesh4.quaternion.copy(this.wheelBody4.quaternion)
-        // this.boxMesh.position.copy(this.body.position)
-        // this.boxMesh.quaternion.copy(this.body.quaternion)
 
         this.model.position.copy(this.body.position)
         this.model.quaternion.copy(this.body.quaternion)

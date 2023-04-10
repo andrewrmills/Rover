@@ -28,28 +28,27 @@ export default class HSU
     setModel()
     {
 
-      this.x = 17
-      this.y = 10
-      this.z = 17
+      this.x = 9.5
+      this.y = 5
+      this.z = 5
 
 
-        // // Physics
-        // this.shape = new CANNON.Box(new CANNON.Vec3(this.x, this.y, this.z))
-        // this.body = new CANNON.Body({
-        //     mass: 0,
-        //     position: new CANNON.Vec3(-42, 0.1, 3),
-        //     quaternion: new CANNON.Quaternion(), 
-        //     shape: this.shape,
-        //     material: this.experience.physics.defaultMaterial
-        // })
+        // Physics
+        this.shape = new CANNON.Box(new CANNON.Vec3(this.x, this.y, this.z))
+        this.body = new CANNON.Body({
+            mass: 0,
+            position: new CANNON.Vec3(-1, 0, 60),
+            quaternion: new CANNON.Quaternion(), 
+            shape: this.shape,
+            material: this.experience.physics.defaultMaterial
+        })
 
-        // this.world.addBody(this.body)
+        this.world.addBody(this.body)
 
         // Model
         this.model = this.resource.scene
         this.model.rotation.set(0, Math.PI, 0)
         this.model.position.set(0, 0, 60)
-        // this.model.position.copy(this.body.position)
         this.model.scale.set(0.015, 0.015, 0.015)
         this.scene.add(this.model)
 

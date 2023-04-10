@@ -40,10 +40,43 @@ export default class Gantry
             position: new CANNON.Vec3(-42, 0.1, 3),
             quaternion: new CANNON.Quaternion(), 
             shape: this.shape,
-            material: this.experience.physics.defaultMaterial
+            material: this.experience.physics.defaultContactMaterial
         })
 
         this.world.addBody(this.body)
+
+        this.shape2 = new CANNON.Box(new CANNON.Vec3(5, 30, 8))
+        this.body2 = new CANNON.Body({
+            mass: 0,
+            position: new CANNON.Vec3(-70, 0.1, 7),
+            quaternion: new CANNON.Quaternion(), 
+            shape: this.shape2,
+            material: this.experience.physics.defaultMaterial
+        })
+
+        this.world.addBody(this.body2)
+
+        this.shape3 = new CANNON.Box(new CANNON.Vec3(7, 20, 3))
+        this.body3 = new CANNON.Body({
+            mass: 0,
+            position: new CANNON.Vec3(-71, 0.1, 38),
+            quaternion: new CANNON.Quaternion(), 
+            shape: this.shape3,
+            material: this.experience.physics.defaultMaterial
+        })
+
+        this.world.addBody(this.body3)
+
+        this.shape4 = new CANNON.Box(new CANNON.Vec3(0.5, 10, 0.5))
+        this.body4 = new CANNON.Body({
+            mass: 0,
+            position: new CANNON.Vec3(-23, 0.1, -40.5),
+            quaternion: new CANNON.Quaternion(), 
+            shape: this.shape4,
+            material: this.experience.physics.defaultMaterial
+        })
+
+        this.world.addBody(this.body4)
 
         // Model
         this.model = this.resource.scene

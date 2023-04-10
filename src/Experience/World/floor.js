@@ -24,7 +24,7 @@ export default class Floor
         this.floorBody = new CANNON.Body({
             mass: 0,
             shape: this.floorShape,
-            material: this.experience.physics.defaultMaterial
+            material: this.experience.physics.defaultContactMaterial
         })
         this.floorBody.quaternion.setFromAxisAngle(
             new CANNON.Vec3(-1, 0, 0),

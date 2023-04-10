@@ -33,7 +33,7 @@ export default class Ramp
             position: new CANNON.Vec3(-43, 1.4, -33),
             quaternion: new CANNON.Quaternion(), 
             shape: this.shape,
-            material: this.experience.physics.defaultMaterial
+            material: this.experience.physics.defaultContactMaterial
         })
         this.body.quaternion.set(1, 0, 0, Math.PI/16)
         this.world.addBody(this.body)

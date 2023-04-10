@@ -6,6 +6,7 @@ import Lander from './Lander.js'
 import Gantry from './Gantry.js'
 import Ramp from './Ramp.js'
 import HSU from './HSU.js'
+import Platform from './Platform.js'
 
 export default class World
 {
@@ -25,6 +26,7 @@ export default class World
             this.gantry = new Gantry()
             this.ramp = new Ramp()
             this.hsu = new HSU()
+            this.platform = new Platform()
             this.environment = new Environment()
         })
     }
@@ -39,6 +41,10 @@ export default class World
         if(this.lander)
         {
             this.lander.update()
+        }
+        if(this.platform)
+        {
+            this.platform.update()
         }
     }
 }

@@ -1,11 +1,11 @@
 
 
 export default [
-    {
-        name: 'environmentHdrTexture',
-        type: 'RGBEtexture',
-        path: 'textures/environmentMap/hdr.hdr'
-    },
+    // {
+    //     name: 'environmentHdrTexture',
+    //     type: 'RGBEtexture',
+    //     path: 'textures/environmentMap/hdr.hdr'
+    // },
     {
         name: 'grassColorTexture',
         type: 'texture',
