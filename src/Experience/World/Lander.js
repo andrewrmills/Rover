@@ -36,7 +36,7 @@ export default class Lander
         // Physics
         this.shape = new CANNON.Box(new CANNON.Vec3(this.x, this.y, this.z))
         this.body = new CANNON.Body({
-            mass: 10,
+            mass: 5,
             position: new CANNON.Vec3(-43, 12, 3),
             quaternion: new CANNON.Quaternion(0, Math.PI/2, 0, 0), 
             shape: this.shape,

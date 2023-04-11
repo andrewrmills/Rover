@@ -50,7 +50,7 @@ export default class Rover
         })       
 
         // Wheels
-        this.mass = 5;
+        this.mass = 50;
         this.axisWidth = 4
         this.friction = 0.7
         this.wheelShape = new CANNON.Sphere(1);
@@ -132,85 +132,82 @@ export default class Rover
 
     document.addEventListener('keydown', (event) => {
         this.maxSteerVal = Math.PI / 8;
-        this.maxForce = 500;
+        this.maxForce = 750;
       
         switch (event.key) {
-            case 'w':
-            case 'ArrowUp':
-            this.vehicle.setWheelForce(this.maxForce, 0);
-            this.vehicle.setWheelForce(this.maxForce, 2);
-            break;
+          case 'w':
+          case 'ArrowUp':
+          this.vehicle.setWheelForce(this.maxForce, 0);
+          this.vehicle.setWheelForce(this.maxForce, 2);
+          break;
       
-            case 's':
-            case 'ArrowDown':
-            this.vehicle.setWheelForce(-this.maxForce / 2, 0);
-            this.vehicle.setWheelForce(-this.maxForce / 2, 2);
-            break;
+          case 's':
+          case 'ArrowDown':
+          this.vehicle.setWheelForce(-this.maxForce / 2, 0);
+          this.vehicle.setWheelForce(-this.maxForce / 2, 2);
+          break;
       
-            case 'a':
-            case 'ArrowLeft':
-            this.vehicle.setSteeringValue(this.maxSteerVal, 0);
-            this.vehicle.setSteeringValue(this.maxSteerVal, 2);
-            break;
+          case 'a':
+          case 'ArrowLeft':
+          this.vehicle.setSteeringValue(this.maxSteerVal, 0);
+          this.vehicle.setSteeringValue(this.maxSteerVal, 2);
+          break;
       
-            case 'd':
-            case 'ArrowRight':
-            this.vehicle.setSteeringValue(-this.maxSteerVal, 0);
-            this.vehicle.setSteeringValue(-this.maxSteerVal, 2);
-            break;
+          case 'd':
+          case 'ArrowRight':
+          this.vehicle.setSteeringValue(-this.maxSteerVal, 0);
+          this.vehicle.setSteeringValue(-this.maxSteerVal, 2);
+          break;
             
-            case 'Shift':
-            this.vehicle.setWheelForce((this.maxForce) * 2, 0);
-            this.vehicle.setWheelForce((this.maxForce) * 2, 2);
-            break
-         }
-        });
+          case 'Shift':
+          this.vehicle.setWheelForce((this.maxForce) * 2, 0);
+          this.vehicle.setWheelForce((this.maxForce) * 2, 2);
+          break
+        }
+    });
 
-        document.addEventListener('keyup', (event) => {
-            switch (event.key) {
-              case 'w':
-              case 'ArrowUp':
-                this.vehicle.setWheelForce(0, 0);
-                this.vehicle.setWheelForce(0, 2);
-                break;
+    document.addEventListener('keyup', (event) => {
+        switch (event.key) {
+          case 'w':
+          case 'ArrowUp':
+          this.vehicle.setWheelForce(0, 0);
+          this.vehicle.setWheelForce(0, 2);
+          break;
       
-              case 's':
-              case 'ArrowDown':
-                this.vehicle.setWheelForce(0, 0);
-                this.vehicle.setWheelForce(0, 2);
-                break;
+          case 's':
+          case 'ArrowDown':
+          this.vehicle.setWheelForce(0, 0);
+          this.vehicle.setWheelForce(0, 2);
+           break;
       
-              case 'a':
-              case 'ArrowLeft':
-                this.vehicle.setSteeringValue(0, 0);
-                this.vehicle.setSteeringValue(0, 2);
-                break;
+          case 'a':
+          case 'ArrowLeft':
+          this.vehicle.setSteeringValue(0, 0);
+          this.vehicle.setSteeringValue(0, 2);
+          break;
       
-              case 'd':
-              case 'ArrowRight':
-                this.vehicle.setSteeringValue(0, 0);
-                this.vehicle.setSteeringValue(0, 2);
-                break;
+          case 'd':
+          case 'ArrowRight':
+          this.vehicle.setSteeringValue(0, 0);
+          this.vehicle.setSteeringValue(0, 2);
+          break;
 
-              case 'Shift':
-                this.vehicle.setWheelForce(this.maxForce, 0);
-                this.vehicle.setWheelForce(this.maxForce, 2);
-                break
+          case 'Shift':
+          this.vehicle.setWheelForce(this.maxForce, 0);
+          this.vehicle.setWheelForce(this.maxForce, 2);
+          break
 
-              case 'r':
-                this.resetModel()
-                break
-            }
-          });
+          case 'r':
+          this.resetModel()
+          break
+        }
+    });
 
-        this.model.position.copy(this.body.position)
-        this.model.quaternion.copy(this.body.quaternion)
     }
 
     update() 
     {      
         this.moveModel()
-
         this.model.position.copy(this.body.position)
         this.model.quaternion.copy(this.body.quaternion)
     }
